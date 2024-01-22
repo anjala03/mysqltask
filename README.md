@@ -1,0 +1,2 @@
+### TODODATABASE   
+"this focus on creating a database named to do , make two tables, define some function for such, and insert into the database and fetch from database using mysql and python commands. mysql is integerated while required"
