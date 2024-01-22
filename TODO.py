@@ -10,15 +10,39 @@ myconnection= mysql.connector.connect(
     database= os.getenv("database_name") )
 print(myconnection)
 my_cursor= myconnection.cursor()
-my_cursor.execute("Create Database If Not Exists todo")
-my_cursor.execute("Show Databases")
-for i in my_cursor:
-    print(i)
+
+def createdb(exec):
+    my_cursor.execute(exec)
+    return
+Todo= "Create Database If Not Exists todo"
+db= createdb(Todo)
+print(db)
+
+def showdb(showw):
+    my_cursor.execute(showw)
+    for i in my_cursor:
+        print(i)
+    return
+sd= "Show Databases"
+sd1= showdb(sd)
+print(sd1)
+
+
+def createtable(ct):
+    res= my_cursor.execute(ct)
+    return res
 
 crt= "Create Table IF NOT EXISTS User (id INT PRIMARY KEY AUTO_INCREMENT, Name VARCHAR(50) NOT NULL)"
-my_cursor.execute(crt)
+
+r1= createtable(crt)
+print(r1)
+
 crw= "Create Table IF NOT EXISTS Work (id INT PRIMARY KEY AUTO_INCREMENT, Task VARCHAR(100), Done CHAR, user_id INT, FOREIGN KEY(user_id) REFERENCES User (id))"
-my_cursor.execute(crw)
+
+r2= createtable(crw)
+print(r2)
+
+
 sql1= "Insert Into User(Name) VALUES (%s)"
 my_val= [
     ('rachel', ), ('Phoebe', ), ('chandler', ), ('ross', ), ('joey', ), ('monica', ), ('gunther', )
